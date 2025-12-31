@@ -5,8 +5,6 @@ export function useUser() {
   const { data: user, isPending: isLoading } = useQuery({
     queryKey: ["user"],
     queryFn: getCurrentUser,
-    retry: false,
-    staleTime: Infinity,
   });
 
   return { user, isLoading, isAuthenticated: user?.role === "authenticated" };
