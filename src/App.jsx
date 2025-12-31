@@ -40,6 +40,32 @@ function App() {
         {/* global */}
         <GlobalStyles />
 
+        {/* router */}
+        <BrowserRouter>
+          <Routes>
+            <Route
+              element={
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<Navigate replace to="/dashboard" />} />
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="account" element={<Account />} />
+              <Route path="bookings" element={<Bookings />} />
+              <Route path="bookings/:id" element={<Booking />} />
+              <Route path="checkin/:id" element={<Checkin />} />
+              <Route path="settings" element={<Settings />} />
+              <Route path="users" element={<Users />} />
+              <Route path="cabins" element={<Cabins />} />
+            </Route>
+            
+            <Route path="login" element={<Login />} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </BrowserRouter>
+
         {/* toaster */}
         <Toaster
           position="top-center"
@@ -62,31 +88,6 @@ function App() {
             },
           }}
         />
-
-        {/* router */}
-        <BrowserRouter>
-          <Routes>
-            <Route
-              element={
-                <ProtectedRoute>
-                  <AppLayout />
-                </ProtectedRoute>
-              }
-            >
-              <Route index element={<Navigate to="/dashboard" replace />} />
-              <Route path="dashboard" element={<Dashboard />} />
-              <Route path="account" element={<Account />} />
-              <Route path="bookings" element={<Bookings />} />
-              <Route path="bookings/:id" element={<Booking />} />
-              <Route path="checkin/:id" element={<Checkin />} />
-              <Route path="settings" element={<Settings />} />
-              <Route path="users" element={<Users />} />
-              <Route path="cabins" element={<Cabins />} />
-            </Route>
-            <Route path="login" element={<Login />} />
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
-        </BrowserRouter>
       </QueryClientProvider>
     </DarkModeProvider>
   );
