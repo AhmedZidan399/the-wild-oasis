@@ -9,12 +9,16 @@ function Account() {
       <Heading as="h1">Update your account</Heading>
 
       <Row>
-        <Heading as="h3">Update user data</Heading>
+        <Heading as="h3" style={{ marginRight: "1rem" }}>
+          Update user data
+        </Heading>
         <UpdateUserDataForm />
       </Row>
 
-      <Row>
-        <Heading as="h3">Update password</Heading>
+      <Row type="horizontal">
+        <Heading as="h3" style={{ marginRight: "1rem" }}>
+          Update password
+        </Heading>
         <UpdatePasswordForm />
       </Row>
     </>

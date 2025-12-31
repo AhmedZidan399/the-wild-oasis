@@ -23,7 +23,7 @@ function UpdateUserDataForm() {
   const { updateUser, isUpdating } = useUpdateUser();
 
   const updateButtonCondition =
-    !fullName.trim() || (fullName.trim() === currentFullName.trim() && !avatar);
+    !fullName || (fullName === currentFullName && !avatar);
 
   function handleSubmit(e) {
     e.preventDefault();
