@@ -10,11 +10,10 @@ export default function useLogin() {
   const { mutate: login, isPending: isLoggingIn } = useMutation({
     mutationFn: ({ email, password }) => apiAuth({ email, password }),
 
-    onSuccess: () => {
+    onSuccess: (user) => {
       toast.success("You have successfully logged in");
-      queryClient.invalidateQueries({ queryKey: ["user"] });
-      //   queryClient.setQueryData(["user"], user);
-      navigate("/dashboard", { replace: true });
+      queryClient.setQueryData(["user"], user);
+      if (user) navigate("/dashboard", { replace: true });
     },
 
     onError: () => {
